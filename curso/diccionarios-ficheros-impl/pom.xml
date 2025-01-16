@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.curso</groupId>
+        <artifactId>curso</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
+    <artifactId>diccionarios-ficheros-impl</artifactId>
+    <name>Implementación del api de diccionarios (ficheros)</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.curso</groupId>
+            <artifactId>diccionarios-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <!-- Esto nos permite usar lombok en el proyecto.
+        Lo cual es ideal.. Tenemos muchas Anotaciones que nos ayudan a no escribir tanto código -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.36</version>
+            <scope>provided</scope> <!-- Le indicamos que lombok no hace falta en el entorno de producción... para ejecutar la app.
+                                         las anotaciones de lombok se procesan en tiempo de compilación -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>

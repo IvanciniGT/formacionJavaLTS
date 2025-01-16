@@ -1,0 +1,4 @@
+--patch-module
+diccionarios.app=_
+--add-reads
+diccionarios.app=ALL-UNNAMED
