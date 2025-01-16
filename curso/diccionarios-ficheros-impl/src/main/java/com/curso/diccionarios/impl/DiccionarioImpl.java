@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RequiredArgsConstructor
 // Genera en automático un constrctor con los atributos final
-public class DiccionarioImpl implements Diccionario {
+class DiccionarioImpl implements Diccionario {
 
     @Getter // Genera un automático un getter para el atributo
     private final String idioma;
@@ -45,10 +45,61 @@ public class DiccionarioImpl implements Diccionario {
                 .map( palabraPuntuada -> palabraPuntuada.palabra)                                                   // Descarta la puntación
                 .toList();                                                                                                        // Mete en una lista
     }
-
+/*
     @RequiredArgsConstructor
     private static class PalabraPuntuada {
         public final String palabra;
         public final int distancia;
     }
+ */
+                                    // Esto serían los argumentos del constructor de la clase / record
+    private record PalabraPuntuada(String palabra, int distancia) {}
+    // ^^^^FINAL: No permite extender el record.. Lo cual ocurre por defecto.. por ser un record
+
+    /*
+
+
+        Este código de arriba sería equivalente a:
+        private final class PalabraPuntuada {
+            public final String palabra;
+            public final int distancia;
+
+            public PalabraPuntuada(String palabra, int distancia){
+                this.palabra = palabra;
+                this.distancia = distancia;
+            }
+
+            public String toString(){
+                return "PalabraPuntuada[palabra=" + palabra + ", distancia=" + distancia + "]";
+            }
+
+            public boolean equals(){
+                if(this == o) return true;
+                if(o == null || getClass() != o.getClass()) return false;
+                PalabraPuntuada that = (PalabraPuntuada) o;
+                return distancia == that.distancia && Objects.equals(palabra, that.palabra);
+            }
+        }
+
+
+        En la práctica los record no los veréis mucho.... ya que LOMBOK llego antes.. y hace MUCHO MAS ...
+        Y se ha impuesto.
+
+
+    @Value // @Getter @AllArgumentsConstructor, @EqualsAndHashCode, @ToString, "private final"
+    private final class PalabraPuntuada {
+        String palabra;
+        int distancia;
+    }
+    // En este caso, lombok crea getters de las props. Lo cual nos da una sintaxis MAS HOMOGENEA con el resto de proyecto.
+
+    Pero es que lombok me da ademas:
+    @Data (Sirve para montar DTOs) // IGUAL @Getter @Setter @AllArgumentsConstructor, @EqualsAndHashCode, @ToString
+    private final class PalabraPuntuada {
+        private String palabra;
+        private int distancia;
+    }
+
+
+    */
 }
