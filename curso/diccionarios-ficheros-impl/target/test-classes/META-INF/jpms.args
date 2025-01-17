@@ -1,0 +1,4 @@
+--patch-module
+diccionarios.ficheros.impl=_
+--add-reads
+diccionarios.ficheros.impl=ALL-UNNAMED

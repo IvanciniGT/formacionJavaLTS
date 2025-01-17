@@ -1,0 +1,8 @@
+manzana=Fruto del manzano
+melón=Fruto del melonero|Persona con pocas luces
+mañana=Al día siguiente
+manzano=Árbol del manzanal
+murciélago=Mamífero volador
+ángel=Ser celestial
+Ángel=Nombre propio
+

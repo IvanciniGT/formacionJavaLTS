@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.curso</groupId>
+        <artifactId>curso</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
+    <artifactId>aplicacion</artifactId>
+    <name>Distribución concreta de la app diccionarios</name>
+
+    <dependencies>
+        <!-- aqui solo van implementaciones -->
+        <dependency>
+            <groupId>com.curso</groupId>
+            <artifactId>diccionarios-app</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.curso</groupId>
+            <artifactId>diccionarios-ficheros-impl</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.36</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <!-- 1) Indicar que quieres ejecutar "java" explícitamente -->
+                    <executable>java</executable>
+                    <arguments>
+                        <!-- 2) Pasar primero los parámetros de la JVM -->
+                        <argument>--module-path=C:\Users\ruizc\OneDrive\Escritorio\formacionJavaLTS-main\curso\diccionarios-app\target\diccionarios-app-0.0.1.jar;=C:\Users\ruizc\OneDrive\Escritorio\formacionJavaLTS-main\curso\diccionarios-ficheros-impl\target\diccionarios-ficheros-impl-0.0.1.jar;C:\Users\ruizc\OneDrive\Escritorio\formacionJavaLTS-main\curso\diccionarios-api\target\diccionarios-api-0.0.1.jar;C:\Users\ruizc\.m2\repository\org\projectlombok\lombok\1.18.36\lombok-1.18.36.jar</argument>
+                        <argument>--add-modules</argument>
+                        <argument>diccionarios.ficheros.impl</argument>
+                        <argument>--add-modules</argument>
+                        <argument>lombok</argument>
+                        <argument>--add-modules</argument>
+                        <argument>diccionarios.api</argument>
+                        <argument>--add-modules</argument>
+                        <argument>diccionarios.app</argument>
+
+                        <!-- 3) Indicar la clase principal (no uses <mainClass>) -->
+                        <argument>com.curso.diccionarios.app.Aplicacion</argument>
+
+                        <!-- 4) Finalmente, los argumentos para el método main(...) -->
+                        <argument>es</argument>
+                        <argument>manzana</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

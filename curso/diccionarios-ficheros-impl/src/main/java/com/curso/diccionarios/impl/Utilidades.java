@@ -3,6 +3,7 @@ package com.curso.diccionarios.impl;
 import com.curso.diccionarios.api.Diccionario;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -56,7 +57,7 @@ interface Utilidades {
         return getRutaDelDiccionario(idioma).isPresent();
     }
 
-    static Optional<Diccionario> cargarDiccionario(String idioma){
+    static Optional<Diccionario> cargarDiccionario(String idioma)  {
         Optional<URL> potencialRutaDelDiccionario = getRutaDelDiccionario(idioma);
         Diccionario aDevolver = null;
         if(potencialRutaDelDiccionario.isPresent()) {
@@ -68,8 +69,9 @@ interface Utilidades {
             //
             //  Palabra3=Significado1|Significado2
             // Para leer el fichero, podemos tirar de una funcion genial que nos han puesto en Java 11
-            Path pathDelFichero = Path.of(potencialRutaDelDiccionario.get().getPath());
+            //Path pathDelFichero = Path.of(potencialRutaDelDiccionario.get().getPath());
             try {
+                Path pathDelFichero = Path.of(potencialRutaDelDiccionario.get().toURI());
                 // String contenido = Files.readString(pathDelFichero); // Java 11
                 // Stream<String> lineas = contenido.lines();// JAVA 11... Me devuelve un Stream<String> con cada linea del fichero.. partiditas por \n \r \n\r
                 Map<String, List<String>> palabras = Files.readString(pathDelFichero).lines()
@@ -88,6 +90,8 @@ interface Utilidades {
                         );
                 aDevolver = new DiccionarioImpl(idioma, palabras);
             } catch (IOException e) {
+                // Logueo por ahí que no he podido leer el fichero
+            }catch (URISyntaxException e){
                 // Logueo por ahí que no he podido leer el fichero
             }
         }

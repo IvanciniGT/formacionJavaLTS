@@ -17,6 +17,10 @@
         <module>diccionarios-app</module>
         <module>diccionarios-ficheros-impl</module>
         <module>programacion-funcional</module>
+        <module>aplicacion</module>
+        <module>fechas</module>
+        <module>dni-api</module>
+        <module>dni-impl</module>
     </modules>
 
     <properties>

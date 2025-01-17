@@ -24,7 +24,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.36</version>
-            <scope>compile</scope> <!-- Le indicamos que lombok no hace falta en el entorno de producción... para ejecutar la app.
+            <scope>provided</scope> <!-- Le indicamos que lombok no hace falta en el entorno de producción... para ejecutar la app.
                                          las anotaciones de lombok se procesan en tiempo de compilación -->
         </dependency>
 
@@ -36,6 +36,7 @@
         </dependency>
 
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -49,7 +50,7 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.28</version>
+                            <version>1.18.36</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

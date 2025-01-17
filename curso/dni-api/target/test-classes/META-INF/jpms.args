@@ -1,0 +1,4 @@
+--patch-module
+dni.api=_
+--add-reads
+dni.api=ALL-UNNAMED
